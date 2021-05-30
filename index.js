@@ -37,6 +37,7 @@ app.post('/todo',(req,res)=> {
     con.query("insert into tabel_todo(deskripsi) values (?)",kata)
     res.end() 
 })
+ 
 
 app.get('/todo', (req ,res) => {
     console.log("Lase")
