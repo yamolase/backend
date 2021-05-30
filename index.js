@@ -51,8 +51,9 @@ app.get('/todo', (req ,res) => {
       });
 })
 
+
 app.delete('/todo/delete', (req, res)=> {
-    con.query('DELETE FROM tabel_todo WHERE id = ?', [req.params.id]); 
+    con.query('DELETE FROM tabel_todo WHERE id = ?', [req.body.id]); 
     res.end()
 })
 
