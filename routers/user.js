@@ -14,9 +14,8 @@ var con = mysql.createConnection({
     password: "",
     database: "todolist"
 });
-// 
 app.post('/', (req, res, next) => {
-    con.query('select count(*) as jumlah_user from tabel_users', function(err, result){
+    con.query('select count(*) as jumlah_user from tabel_user', function(err, result){
         if (result[0].jumlah_user > 0){
             auth(req, res, next)
         } else {
@@ -34,7 +33,7 @@ app.post('/', (req, res, next) => {
 }) 
 
 app.get('/', auth, (req ,res) => {
-    con.query("SELECT * FROM tabel_users", function (err, result) {
+    con.query("SELECT * FROM tabel_user", function (err, result) {
         res.json(result)
         res.end()
     });
@@ -48,8 +47,7 @@ app.delete('/:id',auth, (req, res)=> {
         else {
             con.query('DELETE FROM tabel_user WHERE id = ?', [req.params.id])
         }
-    })   
-    // res.send('DELETE USER ID :  ' + req.params.id)            
+    })             
     res.end()
 })
  

@@ -3,7 +3,7 @@ var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "todolist"
+    database: "dbtodo"
 });
 
 module.exports = function (req, res, next) {
@@ -11,7 +11,7 @@ module.exports = function (req, res, next) {
     const password = req.headers.password
 
     con.connect(function(err){
-        con.query("SELECT * FROM tabel_user WHERE username=? AND password=?",[username,password], function(err, row){
+        con.query("SELECT * FROM tabel_users WHERE username=? AND password=?",[username,password], function(err, row){
             if (row){
                 next()
             } else { 
